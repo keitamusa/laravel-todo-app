@@ -12,7 +12,7 @@
             <h1 class="text-2xl font-semibold mb-4">Edit Todo</h1>
 
             <!-- Update Todo Form -->
-            <form action="/update-todo/{{$todos->id}}" method="POST" class="mb-4">
+            <form action="{{ route('todos.update', $todos->id) }}" method="POST" class="mb-4">
                 @csrf
                 <div class="flex">
                     <input value="{{$todos->description}}" required name="description" type="text" class="flex-1 border rounded py-2 px-3 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add a new todo" />

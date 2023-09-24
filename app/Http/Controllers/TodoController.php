@@ -10,30 +10,32 @@ class TodoController extends Controller
 
     public function index() {
         $todos = Todo::all();
-        return view('components.layout', compact('todos'));
+
+        return view('todos.index', ['todos' => $todos]);
     }
+
 
     public function store(Request $request, Todo $todo) {
         $todoForm = $request->validate([
             'description' => 'required'
         ]);
+
         Todo::create($todoForm);
         $todos = Todo::all();
-        // example:
-        toast('Todo created successfully','success')->autoClose(3000);
+
+        toast('Todo created successfully','success')->autoClose(2000);
         return redirect('/');
 
     }
 
 
     public function view() {
-        $todos = Todo::all();
-        return view('view-todos', compact('todos'));
+        return view('todos/view', $todos = Todo::all());
     }
 
 
     public function edit(Todo $todo) {
-        return view('edit-todo', ['todos' => $todo]);
+        return view('todos.edit', ['todos' => $todo]);
     }
 
 
@@ -41,14 +43,19 @@ class TodoController extends Controller
         $todoForm = $request->validate([
         'description' => 'required'
         ]);
+
         $todo->update($todoForm);
-        toast('Todo updated successfully','success')->autoClose(3000);
+        toast('Todo updated successfully','success')->autoClose(2000);
+
         return redirect('/');
     }
 
+
     public function delete(Todo $todo){
         $todo->delete();
-        toast('Todo deleted successfully','success')->autoClose(3000);
+
+        toast('Todo deleted successfully','success')->autoClose(2000);
+
         return back();
     }
 }

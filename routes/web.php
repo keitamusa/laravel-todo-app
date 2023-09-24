@@ -15,10 +15,10 @@ use App\Http\Controllers\TodoController;
 */
 
 Route::controller(TodoController::class)->group(function (){
-    Route::get('/','index');
-    Route::post('/create-todo','store');
-    Route::get('/view-todo','view');
-    Route::get('/edit-todo/{todo}','edit');
-    Route::post('/update-todo/{todo}','update');
-    Route::get('/delete-todo/{todo}','delete');
+    Route::get('/','index')->name('todos.index');
+    Route::post('/todos/create','store')->name('todos.create');
+    Route::get('/todos/view','view')->name('todos.view');
+    Route::get('/todos/edit/{todo}','edit')->name('todos.edit');
+    Route::post('/todos/update/{todo}','update')->name('todos.update');
+    Route::get('/todos/delete/{todo}','delete')->name('todos.delete');
 });
