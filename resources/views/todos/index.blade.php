@@ -26,8 +26,10 @@
                     <h1 class="text-2xl font-semibold mb-4">Todo List</h1>
                     <!-- Replace with dynamic todo list items -->
 
+                    @if ($todos->count())
+
                     @foreach ($todos as $todo)
-                    <li class="flex items-center justify-between mb-2">
+                        <li class="flex items-center justify-between mb-2">
                         <span class="text-gray-800">{{$todo->description}}</span>
                         <div class="flex space-x-2">
                             <form action="{{ route('todos.edit', $todo->id) }}">
@@ -51,6 +53,12 @@
                         </div>
                     </li>
                     @endforeach
+
+                    @else
+
+                    Your todo list is empty!
+
+                    @endif
 
                 </ul>
 
