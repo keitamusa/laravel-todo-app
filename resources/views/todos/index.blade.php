@@ -30,7 +30,10 @@
 
                     @foreach ($todos as $todo)
                         <li class="flex items-center justify-between mb-2">
-                        <span class="text-gray-800">{{$todo->description}}</span>
+                        <div class="flex">
+                        <input class="mr-1" type="checkbox">
+                        <span class="" class="text-gray-800">{{$todo->description}}</span>
+                        </div>
                         <div class="flex space-x-2">
                             <form action="{{ route('todos.edit', $todo->id) }}">
                             @csrf
